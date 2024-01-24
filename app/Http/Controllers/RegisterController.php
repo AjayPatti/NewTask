@@ -33,11 +33,11 @@ class RegisterController extends Controller
    }    
     public function Store(Request $request){
        
-        // $request->validate([
-        //     'name' =>'required',
-        //     'email' =>'required',
-        //     'pass' =>'required',
-        // ]);
+        $request->validate([
+            'name' =>'required',
+            'email' =>'required',
+            'password' =>'required',
+        ]);
         $data=[
             'name' => $request['name'],
             'email' => $request['email'],
@@ -45,7 +45,11 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
 
         ];
-      User::create($data);
+      $user = User::create($data);
+      if($user){
+          return ['status'=> true];
+
+      }
        
         
             // app/Http/Controllers/Auth/RegisterController.php

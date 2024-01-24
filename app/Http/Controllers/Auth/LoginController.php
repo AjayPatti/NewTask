@@ -52,6 +52,7 @@ class LoginController extends Controller
     
     public function loginSecond(Request $request)
     {
+       
         $request->validate([
             'email' => 'string|required|email',
             'password' => 'string|required'
@@ -59,9 +60,7 @@ class LoginController extends Controller
 
         $userCredential = $request->only('email','password');
         if(Auth::attempt($userCredential)){
-
-            $route = $this->redirectDash();
-           
+            $route = $this->redirectDash();  
             return redirect($route);
         }
         else{
@@ -79,7 +78,7 @@ class LoginController extends Controller
     {
         $redirect = '';
 
-        if(Auth::user() && Auth::user()->login_type =='admin'){
+        if( Auth::user()->login_type =='admin'){
             $redirect = 'home';
         }
         else{

@@ -59,7 +59,7 @@ $(document).ready(function(){
 $("#form").on('submit',function(e){
     e.preventDefault();
     $.ajax({
-        url: "{{ route('register') }}", 
+        url: "{{ route('store') }}", 
         data: $("#form").serialize(), 
         type: "post", 
         success: function (resp) {

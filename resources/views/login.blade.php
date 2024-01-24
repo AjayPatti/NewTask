@@ -30,6 +30,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6 mt-5"style="background-color:white";>
             <!-- Default form login -->
+     
 <form class="text-center  p-5" action="{{route('login')}}" method="post" id="form">
 @csrf
 <p class="h4 mb-4">Login</p>
